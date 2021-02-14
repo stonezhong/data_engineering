@@ -1,0 +1,25 @@
+[data-role="page"] {
+    [data-role="page-header"] {
+        background-color: rgb(250, 250, 250);
+    }
+
+    [data-role="page-index"] {
+        background-color: rgb(210, 210, 210);
+        overflow: auto;
+    }
+
+    [data-role="page-content"] {
+        background-color: white;
+        min-height: 800px;
+        overflow: auto;
+    }
+
+    [data-role="page-footer"] {
+        background-color: rgb(250, 250, 250);
+    }
+}
+
+.social-media-icon {
+    width: 16px;
+    height: 16px;
+}
