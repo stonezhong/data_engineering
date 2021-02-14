@@ -2,5 +2,31 @@
     {
         "title": "readme",
         "page_name": "readme"
+    },
+    {
+        "title": "Fundamentals",
+        "page_name": "fundamentals",
+        "children": [
+            {
+                "title": "Computing Platforms",
+                "page_name": "computing_platforms"
+            },
+            {
+                "title": "Storage",
+                "page_name": "storage"
+            },
+            {
+                "title": "ETL Pipeline Orchestration",
+                "page_name": "etl_pipeline_orchestration"
+            },
+            {
+                "title": "Data Visualization",
+                "page_name": "data_visualization"
+            },
+            {
+                "title": "Data Catalog",
+                "page_name": "data_catalog"
+            }
+        ]
     }
 ]

@@ -60,8 +60,8 @@ class DocumentPage extends React.Component {
     renderIndexNode(node) {
         let currentUrl = new URL(window.location.href);
         const qs = new URLSearchParams("");
-        if (this.props.pageName !== "readme") {
-            qs.append("page_name", this.props.pageName);
+        if (node.page_name !== "readme") {
+            qs.append("page_name", node.page_name);
         }
         const newUrl = currentUrl.toString().split("?")[0] + "?" + qs.toString();
 
@@ -121,7 +121,6 @@ class DocumentPage extends React.Component {
 $(function() {
 
     const urlParams = new URLSearchParams(window.location.search);
-    const local_test = urlParams.get('local_test');
 
     let pageName = urlParams.get('page_name');
     if (!pageName) {
