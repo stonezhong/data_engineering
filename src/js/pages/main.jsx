@@ -27,7 +27,7 @@ class DocumentPage extends React.Component {
     }
 
     get baseDir() {
-        return (window.location.href.startsWith("/data_engineering")?"/data_engineering":"");
+        return (window.location.pathname.startsWith("/data_engineering")?"/data_engineering":"");
     }
 
 
