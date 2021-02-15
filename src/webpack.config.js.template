@@ -24,7 +24,11 @@ module.exports = env => ({
         ],
     },
     entry: {
-        "main"              : '/js/pages/main.jsx',
+        {% for page_name, page_desc in pages.items() %}
+        "{{page_name}}-page"     : '/pages/{{page_name}}/content.jsx',
+        {% endfor %}
+        "page-frame"              : '/js/page_frame/main.jsx',
+
     },
     output: {
         path: path.resolve("docs", "static", "js-bundle"),

@@ -17,61 +17,22 @@ import $ from 'jquery'
  * Purpose: Common Base Page
  *
  * props
- * pageName  : string, the name of the page to load
- * localTest : boolean, are we running local testing?
+ *     pageName
+ *     sitePrefix
+ *     config             // see config.json for example
  */
 class DocumentPage extends React.Component {
-    state = {
-        page_content: "loading ...",
-        index: []
-    }
-
-    get baseDir() {
-        return (window.location.pathname.startsWith("/data_engineering")?"/data_engineering":"");
-    }
-
-
-    async load_content() {
-        let resp = await fetch(
-            `${this.baseDir}/pages/index.json`, {cache: "reload"}
-        );
-
-        if (!resp.ok) {
-            // Need to surface error
-            return;
-        }
-        const index = await resp.json();
-        this.setState({index, index});
-
-        resp = await fetch(
-            `${this.baseDir}/pages/${this.props.pageName}/index.html`, {cache: "reload"}
-        )
-        let page_content = "page not found!";
-        if (resp.ok) {
-            page_content = await resp.text();
-        }
-        this.setState({page_content: page_content});
-    }
-
-    componentDidMount() {
-        this.load_content();
-    }
-
     renderIndexNode(node) {
-        let currentUrl = new URL(window.location.href);
-        const qs = new URLSearchParams("");
-        if (node.page_name !== "readme") {
-            qs.append("page_name", node.page_name);
-        }
-        const newUrl = currentUrl.toString().split("?")[0] + "?" + qs.toString();
-
-        let link = <a href={newUrl}>{node.title}</a>;
-        if (node.page_name === this.props.pageName) {
+        let pageDesc = this.props.config.pages[node.page_name];
+        const url = `${this.props.sitePrefix}/pages/${node.page_name}/page.html`;
+        console.log(url);
+        let link = <a href={url}>{pageDesc.title}</a>;
+        if (this.props.pageName === node.page_name) {
             link = <b>{link}</b>;
         }
 
         if (_.isEmpty(node.children)) {
-            return <div className="index-leaf-node">{link}</div>;
+            return <div key={node.page_name} className="index-leaf-node">{link}</div>;
         }
 
         return (
@@ -96,12 +57,12 @@ class DocumentPage extends React.Component {
                     <Col data-role="page-index" xs={3}>
                         <div>
                             {
-                                this.state.index.map(node => this.renderIndexNode(node))
+                                this.props.config.index.map(node => this.renderIndexNode(node))
                             }
                         </div>
                     </Col>
                     <Col data-role="page-content">
-                        <div dangerouslySetInnerHTML={{__html: this.state.page_content}}></div>
+                        <ContentComponent />
                     </Col>
                 </Row>
                 <Row>
@@ -119,17 +80,13 @@ class DocumentPage extends React.Component {
 }
 
 $(function() {
-
-    const urlParams = new URLSearchParams(window.location.search);
-
-    let pageName = urlParams.get('page_name');
-    if (!pageName) {
-        pageName = "readme";
-    }
+    let page_config = JSON.parse($("meta[name='page_config']")[0].content)
 
     ReactDOM.render(
         <DocumentPage
-            pageName = {pageName}
+            pageName = {page_config.page_name}
+            sitePrefix = {page_config.site_prefix}
+            config = {page_config.config}   // see config.json for example
         />,
         document.getElementById('app')
     );

@@ -1,0 +1,50 @@
+{
+    "pages": {
+        "readme": {
+            "title": "readme"
+        },
+        "fundamentals": {
+            "title": "Fundamentals"
+        },
+        "compute_platforms": {
+            "title": "Compute Platforms"
+        },
+        "storage": {
+            "title": "Storage"
+        },
+        "etl_pipeline_orchestration": {
+            "title": "ETL Pipeline Orchestration"
+        },
+        "data_visualization": {
+            "title": "Data Visualization"
+        },
+        "data_catalog": {
+            "title": "Data Catalog"
+        }
+    },
+    "index": [
+        {
+            "page_name": "readme"
+        },
+        {
+            "page_name": "fundamentals",
+            "children": [
+                {
+                    "page_name": "compute_platforms"
+                },
+                {
+                    "page_name": "storage"
+                },
+                {
+                    "page_name": "etl_pipeline_orchestration"
+                },
+                {
+                    "page_name": "data_visualization"
+                },
+                {
+                    "page_name": "data_catalog"
+                }
+            ]
+        }
+    ]
+}

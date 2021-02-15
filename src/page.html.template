@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewpoint" content="with=device, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data Engineering Home</title>
-    <link rel="shortcut icon" href="static/images/logo.png">
-    <link rel="stylesheet" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/react-treeview.css">
-
+    <title>{{title}}</title>
+    <link rel="shortcut icon" href="{{site_prefix}}/static/images/logo.png">
+    <link rel="stylesheet" href="{{site_prefix}}/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{site_prefix}}/static/css/react-treeview.css">
 
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"
@@ -29,7 +28,11 @@
         crossorigin>
     </script>
 
-    <script crossorigin src="static/js-bundle/main.js"></script>
+    <meta name="page_config" content="{{ page_config }}">
+
+
+    <script crossorigin src="{{site_prefix}}/static/js-bundle/{{page_name}}-page.js"></script>
+    <script crossorigin src="{{site_prefix}}/static/js-bundle/page-frame.js"></script>
 </head>
 
 <body>
