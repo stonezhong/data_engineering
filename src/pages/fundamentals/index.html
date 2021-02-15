@@ -1,1 +1,78 @@
-<p>Blah...</p>
+<div>
+    <ul>
+        <li><a href="#Data-Lake-Design-Goals">Data Lake Design Goals</a>
+            <ul>
+                <li><a href="#data_security">Data Security</a></li>
+                <li><a href="#processing_data_at_scale">Processing Data at Scale</a></li>
+                <li><a href="#streaming_and_or_batching_process">Streaming vs Batching Process</a></li>
+                <li><a href="#data_visualization">Data Visualization</a></li>
+                <li><a href="#ETL_Pipeline_Orchestration">ETL Pipeline Orchestration</a></li>
+                <li><a href="#Devop_Integration">Devop Integration</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<h1 id="Data-Lake-Design-Goals">Data Lake Design Goals</h1>
+
+<h2 id="data_security">Data Security</h2>
+<p>
+Access to data should only be granted to authorized identity. Access to data should be audited. All data access operation (or attempt) should be tracked.
+</p>
+
+
+<h2 id="processing_data_at_scale">Processing Data at Scale</h2>
+<p>
+As business grows, your data may grow as well. In many scenarios, your data lake need to be able to process data at scale.
+For example, scanning a table of 1 billion rows of transaction data and calculate the revenue group by merchant id.
+
+The industry is shifted to big data realted technologies such as Apache Spark from traditional analytical database as compute engine for processing data at scale.
+</p>
+
+
+<h2 id="streaming_and_or_batching_process">Streaming vs Batching Process</h2>
+<p>
+In additional to processing data in batches with ETL pipelines, you need to decide if your business requires processing streaming data.
+
+For example, a stock broker sends trading summary to everyone at the end of day, it is a typical batching process.
+However, bank's ATM system might monitor all the ATM transactions and may suspend potential fraudulent transaction ASAP,
+the sooner you can process the data and discover fraudulent transactions, the more loss you can prevent.
+
+<ul>
+    <li>Apache Spark support batching process, with spark streaming, it also support near-real-time streaming processing.</li>
+    <li>Apache Flink can hande real-time streaming data at scale</li>
+    <li>Apache Strom is another streaming processing platform</li>
+</ul>
+</p>
+
+<h2 id="data_visualization">Data Visualization</h2>
+<p>
+Visualized data is easier to understand, and get vision from it. For example, looking at stock chart is better
+than looking at 5-minute trading record of a stock, with chart, you can see the trend better than looking at trading transactions table.<br />
+<br />
+People sometimes also call it BI, or Business Intelligence. Here is an incomplete list of data visualization platforms:<br />
+<ul>
+    <li>Apache Superset</li>
+    <li>Microsoft Power BI</li>
+    <li>Tableau</li>
+</ul>
+</p>
+
+
+<h2 id="ETL_Pipeline_Orchestration">ETL Pipeline Orchestration</h2>
+<p>
+
+Apache Airflow is a commonly used to orchestrate your ETL pipelines, main features includes:
+<ul>
+    <li>You can create DAG which contains bunch of tasks, and specify dependency between tasks.</li>
+    <li>You can set execution schedule for your DAG</li>
+    <li>You have a Web UI, allows you to browse the DAG status, recover failed DAG-run.</li>
+</ul>
+</p>
+
+<h2 id="Devop_Integration">Devop Integration</h2>
+<p>
+Your data lake need to integrate with your company's devop system. For example, operational failure can be surfaced to devop people.<br />
+
+For example, you do not want a ETL pieline failure slip silently.
+</p>
