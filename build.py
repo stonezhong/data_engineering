@@ -82,6 +82,10 @@ class WebsiteGenerator:
         })
         with open(os.path.join(page_dir, "page.html"), "wt") as f:
             f.write(output)
+        if config['home'] == page_name:
+            with open(os.path.join(self.base_dir, "docs", "index.html"), "wt") as f:
+                f.write(output)
+
 
 
     def copy_dir(self, src_dir, dst_dir):
