@@ -1,4 +1,14 @@
+{% if css %}
+    import "{{css}}"
+{% endif %}
+
 import React from 'react'
+
+
+import CardDeck from 'react-bootstrap/CardDeck'
+import Card from 'react-bootstrap/Card'
+import CardGroup from 'react-bootstrap/CardGroup'
+import CardColumns from 'react-bootstrap/CardColumns'
 
 class ContentComponent extends React.Component {
     render() {

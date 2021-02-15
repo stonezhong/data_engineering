@@ -60,8 +60,15 @@ class WebsiteGenerator:
                 page_content = f.read()
         else:
             page_content = ""
+
+        if os.path.isfile(os.path.join(src_page_dir, "page.scss")):
+            css = "./page.scss"
+        else:
+            css = None
+
         output = template.render({
-            "content"   : page_content
+            "content"   : page_content,
+            "css"       : css
         })
         with open(os.path.join(src_page_dir, "content.jsx"), "wt") as f:
             f.write(output)

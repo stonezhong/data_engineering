@@ -48,9 +48,14 @@ class DocumentPage extends React.Component {
     render() {
         return (
             <Container data-role="page" fluid>
-                <Row>
-                    <Col data-role="page-header">
+                <Row data-role="page-header">
+                    <Col >
                         <h1>Data Engineering Knowledge Center</h1>
+                    </Col>
+                    <Col xs={3}>
+                        Created by Stone Zhong. {' '}
+                            <a href="https://www.linkedin.com/in/stonezhong/">Linkedin Profile</a>{' | '}
+                            <a href="https://github.com/stonezhong/">Github Profile</a>
                     </Col>
                 </Row>
                 <Row>
@@ -68,9 +73,6 @@ class DocumentPage extends React.Component {
                 <Row>
                     <Col data-role="page-footer">
                         <div>
-                            Created by Stone Zhong. {' '}
-                            <a href="https://www.linkedin.com/in/stonezhong/">Linkedin Profile</a>{' | '}
-                            <a href="https://github.com/stonezhong/">Github Profile</a>
                         </div>
                     </Col>
                 </Row>
