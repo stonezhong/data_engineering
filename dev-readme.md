@@ -58,6 +58,7 @@ npx http-server docs/ -p 8080 -o http://localhost:8080/
 ```
 
 # To build and publish your changes
-```
-npm run build-prod
+```bash
+./build.py                                         # for local testing
+./build.py --site-prefix="/data_engineering"       # for github
 ```
