@@ -1,1 +1,1 @@
-Please navigate to [wiki](https://github.com/stonezhong/data_engineering/wiki) pages
+Please navigate to [Data Engineering Knowledge Center](https://stonezhong.github.io/data_engineering/) for details.
