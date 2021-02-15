@@ -47,36 +47,26 @@ class DocumentPage extends React.Component {
 
     render() {
         return (
-            <Container data-role="page" fluid>
-                <Row data-role="page-header">
-                    <Col >
-                        <h1>Data Engineering Knowledge Center</h1>
-                    </Col>
-                    <Col xs={3}>
+            <div>
+                <div className="page-header">
+                    <h1 >Data Engineering Knowledge Center</h1>
+                    <div className="user-profile">
                         Created by Stone Zhong. {' '}
                             <a href="https://www.linkedin.com/in/stonezhong/">Linkedin Profile</a>{' | '}
                             <a href="https://github.com/stonezhong/">Github Profile</a>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col data-role="page-index" xs={3}>
-                        <div>
-                            {
-                                this.props.config.index.map(node => this.renderIndexNode(node))
-                            }
-                        </div>
-                    </Col>
-                    <Col data-role="page-content">
+                    </div>
+                </div>
+                <div className="body-wrapper">
+                    <div className="page-index">
+                    {
+                        this.props.config.index.map(node => this.renderIndexNode(node))
+                    }
+                    </div>
+                    <div className="page-content">
                         <ContentComponent />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col data-role="page-footer">
-                        <div>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
         )
     }
 }
