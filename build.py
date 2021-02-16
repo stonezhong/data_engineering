@@ -93,6 +93,11 @@ class WebsiteGenerator:
             with open(os.path.join(self.base_dir, "docs", "index.html"), "wt") as f:
                 f.write(output)
 
+        # copy resource directory
+        src_dir = os.path.join(src_page_dir, "resources")
+        dst_dir = os.path.join(page_dir, "resources")
+        if os.path.isdir(src_dir):
+            self.copy_dir(src_dir, dst_dir)
 
 
     def copy_dir(self, src_dir, dst_dir):

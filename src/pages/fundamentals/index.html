@@ -1,5 +1,6 @@
 <div>
     <ul>
+        <li><a href="#Basic-Data-Lake-Design-Example">Basic Data Lake Design Example</a></li>
         <li><a href="#Data-Lake-Design-Goals">Data Lake Design Goals</a>
             <ul>
                 <li><a href="#data_security">Data Security</a></li>
@@ -12,6 +13,21 @@
         </li>
     </ul>
 </div>
+
+<h1 id="Basic-Data-Lake-Design-Example">Basic Data Lake Design Example</h1>
+<p>
+    <img src="resources/data-lake-design.png" /><br/>
+    Hightlights:
+    <ul>
+        <li>Uses AWS EMR as Apache Spark Engine</li>
+        <li>Stores all assets, mainly parquet files in S3 buckets</li>
+        <li>Use Apache Airflow to orchestrate data ingestion jobs and data transformation jobs, airflow tasks talks to livy interface to spawn spark batch jobs</li>
+        <li>Uses Jupyter Hub for user who want to explore the data with notebooks, jupyter notebook talks to livy interface to spawn spark session, user can write pyspark code or scala code to launch spark job interactively</li>
+        <li>When data assets are produced in S3, they also gets registered in Data Catalog Service</li>
+        <li>Some ETL job will generate reports and write to MySQL via spark's JDBC connection</li>
+        <li>Uses Apache Superset to build charts and dashboards for data visualization, superset read data from MySQL</li>
+    </ul>
+</p>
 
 <h1 id="Data-Lake-Design-Goals">Data Lake Design Goals</h1>
 
