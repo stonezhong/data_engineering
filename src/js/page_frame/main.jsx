@@ -57,7 +57,7 @@ class DocumentPage extends React.Component {
                     </div>
                 </div>
                 <div className="body-wrapper">
-                    <SplitPane split="vertical" minSize={200} defaultSize={300}>
+                    <SplitPane split="vertical" minSize={200} defaultSize={300} className="panel-wrapper">
                         <div className="page-index">
                         {
                             this.props.config.index.map(node => this.renderIndexNode(node))

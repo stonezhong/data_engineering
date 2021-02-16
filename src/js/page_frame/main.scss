@@ -14,7 +14,6 @@ $index-width: 300px;
     background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
     clear: both;
     border-bottom: 1px solid lightgray;
-    position: fixed;
     height: $header-height;
     width: 100%;
     top: 0;
@@ -28,8 +27,12 @@ $index-width: 300px;
 }
 
 .body-wrapper {
-    margin-top: $header-height;
     height: calc(100vh - #{$header-height});
+    overflow: hidden;
+
+    .panel-wrapper {
+        height: calc(100vh - #{$header-height}) !important;
+    }
 
     .page-index {
         background-color: rgb(236, 236, 236);
