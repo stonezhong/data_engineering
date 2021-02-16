@@ -50,7 +50,7 @@ npm install http-server
 
 # To run a local dev server:
 ```
-npx http-server docs/ -p 8080 -o http://localhost:8080/
+npx http-server docs/ -p 8080
 # make sure you access http://localhost:8080/index_local.html
 # while in github, you access https://stonezhong.github.io/data_engineering/
 

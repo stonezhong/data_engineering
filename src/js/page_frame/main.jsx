@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import SplitPane from 'react-split-pane'
+import TreeView from 'react-treeview'
 
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
@@ -7,7 +9,6 @@ import Row from 'react-bootstrap/Row'
 
 const _ = require("lodash");
 
-import TreeView from 'react-treeview';
 
 import "./main.scss"
 import $ from 'jquery'
@@ -25,7 +26,6 @@ class DocumentPage extends React.Component {
     renderIndexNode(node) {
         let pageDesc = this.props.config.pages[node.page_name];
         const url = `${this.props.sitePrefix}/pages/${node.page_name}/page.html`;
-        console.log(url);
         let link = <a href={url}>{pageDesc.title}</a>;
         if (this.props.pageName === node.page_name) {
             link = <b>{link}</b>;
@@ -57,14 +57,16 @@ class DocumentPage extends React.Component {
                     </div>
                 </div>
                 <div className="body-wrapper">
-                    <div className="page-index">
-                    {
-                        this.props.config.index.map(node => this.renderIndexNode(node))
-                    }
-                    </div>
-                    <div className="page-content">
-                        <ContentComponent />
-                    </div>
+                    <SplitPane split="vertical" minSize={200} defaultSize={300}>
+                        <div className="page-index">
+                        {
+                            this.props.config.index.map(node => this.renderIndexNode(node))
+                        }
+                        </div>
+                        <div className="page-content">
+                            <ContentComponent />
+                        </div>
+                    </SplitPane>
                 </div>
             </div>
         )
